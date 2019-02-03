@@ -35,5 +35,8 @@
     <ClCompile Include="multiply.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="divide.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

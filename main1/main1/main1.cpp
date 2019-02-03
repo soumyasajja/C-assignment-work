@@ -7,16 +7,19 @@ using namespace std;
 int add(int a, int b);
 int subtract(int c, int d);
 int multiply(int e, int f);
+int divide(int g, int h);
 int main()
 { 
-	int addition,subtraction,multiplication;
+	int addition,subtraction,multiplication,division;
     cout << "Hello World!\n"; 
 	addition = add(3, 4);
 	subtraction = subtract(3, 4);
 	multiplication = multiply(3, 4);
+	division = divide(3, 4);
 	cout << "addition=" << addition << endl;
 	cout << "subtraction=" << subtraction << endl;
 	cout << "multiplication=" << multiplication << endl;
+	cout << "division=" << division << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
