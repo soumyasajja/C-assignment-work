@@ -1,4 +1,4 @@
-// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// main1.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
@@ -6,9 +6,11 @@
 using namespace std;
 int add(int a, int b);
 int main()
-{
-	cout << "Created main function" << endl;
-	add(3,4);
+{ 
+	int addition;
+    cout << "Hello World!\n"; 
+	addition = add(3, 4);
+	cout << "addition=" << addition << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
