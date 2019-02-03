@@ -6,14 +6,17 @@
 using namespace std;
 int add(int a, int b);
 int subtract(int c, int d);
+int multiply(int e, int f);
 int main()
 { 
-	int addition,subtraction;
+	int addition,subtraction,multiplication;
     cout << "Hello World!\n"; 
 	addition = add(3, 4);
 	subtraction = subtract(3, 4);
+	multiplication = multiply(3, 4);
 	cout << "addition=" << addition << endl;
 	cout << "subtraction=" << subtraction << endl;
+	cout << "multiplication=" << multiplication << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
