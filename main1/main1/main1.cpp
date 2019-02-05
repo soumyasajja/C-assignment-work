@@ -6,7 +6,7 @@
 using namespace std;
 int add(int a, int b);
 int subtract(int c, int d);
-int multiply(int e, int f);
+long int multiply(int e, int f);
 int divide(int g, int h);
 int main()
 { 
