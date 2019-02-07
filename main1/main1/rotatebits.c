@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define INT_BITS 32
+#define INT_BITS 4
 int rotateByb(int,unsigned int);
 int main()
 { 
