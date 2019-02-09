@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 /main1/main1/stringsort.exe
+/main1/main1/strcat.c
+/main1/main1/strcat.exe
+/main1/main1/strcmp.c
