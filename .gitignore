@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /main1/main1/stringsort.exe
+/main1/main1/strtok.c
