@@ -6,7 +6,7 @@ int main()
      printf("enter the string\n");
      for(i=0;i<=79;i++)
      { 
-        scanf("%c",&text[i]);
+        scanf("%[^\n]s",&text[i]);
       }
      for(i=0;i<=79;i++)
      {
@@ -31,6 +31,10 @@ int main()
              tabs=tabs++;
          }
        }
+printf("num=%d",num);
+printf("alpha=%d",alpha);
+printf("blanks=%d",blanks);
+printf("tabs=%d",tabs);
 return 0;
 }
              
