@@ -1,15 +1,15 @@
 #include<stdio.h>
-int checkOnes(int);
-int reversebyte(int);
-int rotate(int);
+void checkOnes(int);
+void reversebyte(int);
+void rotate(int);
 int main()
-{ int val=0xCAFE,ones,reve,rot;
-  ones=checkOnes(val);
-  reve=reversebyte(val);
-  rot=rotate(val);
+{ int val=0xCAFE;
+  checkOnes(val);
+  reversebyte(val);
+  rotate(val);
   return 0;
   }
-  int checkOnes(int value)
+  void checkOnes(int value)
   {
   
   	int and1;
@@ -18,9 +18,9 @@ int main()
       printf("atleast three bits are on\n");
 	  else
 	  	 printf("atleast three bits are off\n");  	
-   return and1;	 
+   	 
   }
-  int reversebyte(int value)
+ void reversebyte(int value)
   {
   		
 		int rev1,rev2,rev;
@@ -30,14 +30,13 @@ int main()
 		rev2=rev2>>8;
 		rev=rev1|rev2;
 		printf("%x\n",rev);
-  return rev;
   }
-  int rotate(int value)
+  void rotate(int value)
   { int value1,value2;
   value1=value&0x000F;
  value1=value1<<16;
- value2=value>>16;
- value2=value1|value2;
+ value1=value1>>4;
+  value2=value>>4;
+  value2=value1|value2;
   printf("%x\n",value2);
- return value2;
   }
