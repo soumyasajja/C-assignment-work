@@ -1,0 +1,4 @@
+this is c assignment 1 !!
+// created on 11-02-2019
+/*four questions*/
+	ghij1
