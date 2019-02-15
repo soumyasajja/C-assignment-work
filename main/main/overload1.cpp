@@ -3,7 +3,7 @@ using namespace std;
 class STUDENT
 {
 	int rollno;
-	char *name;
+	char name[20];
 	int marks[3];
 	int total=0;
 	char grade;
@@ -33,8 +33,9 @@ istream& operator>>(istream& cin, STUDENT s)
 		cin >> s.marks[i];
 	}
 	cin >> s.name;
+	return cin;
 }
-void generate_results(STUDENT s_arr[], int n)
+void generate_results(STUDENT *s_arr, int n)
 {
 	s_arr = new STUDENT[n];
 	for (int i = 0; i < n; i++)
@@ -69,13 +70,16 @@ void generate_results(STUDENT s_arr[], int n)
 int main()
 {
 	STUDENT s1, s2, s3;
-	cout << "enter the values of objects" << endl;
-	cin >> s1;
+	STUDENT s_arr[] = { s1,s2,s3 };
+	cout << "enter the values of 1st object" << endl;
+	cin >> s1;+
+	cout << "enter the value of second object" << endl;
 	cin >> s2;
+	cout << "enter the value of third object" << endl;
 	cin >> s3;
-	generate_results([s1, s2, s3], 3);
-	cout >> s1;
-	cout >> s2;
-	cout >> s3;
+	generate_results(s_arr, 3);
+	cout << s1;
+	cout << s2;
+	cout << s3;
 	return 0;
 }
