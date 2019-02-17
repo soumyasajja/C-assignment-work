@@ -6,12 +6,34 @@ class String
 public:
 	char *sptr;
 	int len;
+	String()
+	{
+		sptr = NULL;
+		len = 0;
+	}
+	/*String(const String &s)
+	{
+		len = s.len;
+	    strcpy(sptr, s.sptr);
+	}*/
+	~String()
+	{
+		if (sptr != NULL)
+			free(sptr);
+	}
+	String(const String&temp)
+	{
+		len = temp.len;
+		sptr = (char*)malloc(sizeof(char)*(len + 1));
+		strcpy(sptr, temp.sptr);
+	}
 	String operator=(String temp)
 	{
 		len = temp.len;
 		if (sptr != NULL)
-			free sptr;
+			free;
 		sptr = (char*)malloc(sizeof(char)*(len + 1));
+		strcpy(sptr, temp.sptr);
 	}
 	friend istream& operator>>(istream& cin, String& s);
 	friend ostream& operator<<(ostream& cout, String s);
@@ -34,8 +56,13 @@ ostream& operator<<(ostream& cout, String s)
 }
 int main()
 {
-	String s;
-	cout << "enter the contents of the string"<<endl;
-	cin >> s;
-	cout << s;
+	String s1, s4,s3(s4);
+	cout << "enter the contents of the string s1"<<endl;
+	cin >> s1;
+	cout << "enter the contents of string s4" << endl;
+	cin >> s4;
+	cout << s1;
+	cout << s3;
+	cout << s4;
+	return 0;
 }
