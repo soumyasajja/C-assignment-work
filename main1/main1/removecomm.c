@@ -1,64 +1,52 @@
-#include<stdio.h>
-#include<stdlib.h>
-
+#include <stdio.h>
+void removecomm();
 int main()
-//void remove_comments()
 {
-	FILE *fp1,*fp2;
-	char ch1;
-
-	
-	fp1=fopen("hello2.txt","r");
-	fp2=fopen("hello2out.txt","w");
-	
-	if ( fp1 == NULL || fp2 == NULL )  
-	{   
-		printf( "Cannot open file\n" ) ;  
-		return;
-	}
-	
-	while(1)
-	{
-		ch1=fgetc(fp1);
-			
-		if(ch1==EOF)
-		break;
-
-		if(ch1=='/')
-		{
-			ch1=fgetc(fp1);
-		
-			if(ch1=='/')
-			{
-				while(ch1!='\n')
-				{
-					ch1=fgetc(fp1);	
-										
-				}
-			}
-			
-			if(ch1=='*')	
-			{
-				ch1=fgetc(fp1);
-				while(ch1!='*')
-				{
-					ch1=fgetc(fp1);
-					if(ch1=='/')
-					{
-						ch1=fgetc(fp1);
-						break;
-					}
-					
-				}
-			}
-			
-		}
-		fputc(ch1,fp2);
-	}
-
-	printf("Comments replaced in new file hello2out.txt\n");
-	fclose(fp1);
-	fclose(fp2);
-	return;
-
+    removecomm();
+    return 0;
 }
+void removecomm()
+{
+     FILE *fp1;
+     fopen(&fp1,"text.txt","w+");
+     char s1[4]="//";
+     char s2[4]="/*";
+     char s3[4]="*/";
+     int i,j=0,k=0,l=0;
+     char c[100];
+     //loop to copy the contents of file to string
+     for(;fp1!=EOF;fp1++)
+     {     
+            c[i]=fgetc(fp1);
+             i++;
+       }
+       //loop to remove the comments from string
+       for(i=0;c[i]!='\0';i++)
+        {   
+            if(c[i]==s1[j]&&c[i]!='\n')
+            {
+                  c[i]='\0';
+                  j++;
+              }
+            else if(c[i]==s2[j])
+             {
+                    while(c[i]!=s3[l])
+                      {
+                            c[i]='\0';
+                             l++;
+                       }
+               }
+        }
+        // loop to copy the contents of string to file
+        for(;fp1!=EOF;fp1++)
+       { 
+           for(i=0;c[i]!='\0';i++)
+           {
+            fputc(c[i],fp1);
+           }
+        }
+       printf("%s",c);
+      fclose(fp1);
+}
+
+          

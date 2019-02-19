@@ -1,52 +1,44 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-void count_contents()
+#include <stdio.h>
+void countchar();
+int main()
 {
-	FILE *fp;
-	char ch;
-
-	int alphas=0,digits=0,spaces=0,tabline=0,special=0;
-	
-	fp=fopen("hello1.txt","r");
-	if ( fp == NULL )  
-	{   
-		printf( "Cannot open file\n" ) ;  
-		return;
-	}
-	
-	while(1)
-	{
-		ch=fgetc(fp);
-		
-		if(ch==EOF)
-		break;
-
-		if(ch>='A'&& ch <='Z' || ch>='a' && ch<='z')
-			alphas++;
-		else
-			if(ch>='0' && ch<='9')
-				digits++;
-			else
-				if(ch==' ')
-					spaces++;
-				else
-					if(ch=='\n'||ch=='\t')
-						tabline++;
-					else
-						special++;
-		//fp++;
-	}
-
-	fclose(fp);
-
-	printf("\nNumber of Aplhabets:%d\n",alphas);
-	printf("Number of Digits: %d\n",digits);
-	printf("Number of Spaces: %d\n", spaces);
-	printf("Number of Tabs or New Lines: %d\n",tabline);
-	printf("Number of Special Characters: %d\n",special);
-	
-	return;
+   countchar();
+   return 0;
 }
-
-// use fopen_s in visual studio. 3 args. first arg if file ptr;
+void countchar()
+{
+      FILE *fp;
+      fopen(&fp,"text.txt","r+");
+      char c;
+      int i,count_alpha=0,count_digits=0,count_spaces=0,count_special=0;
+      // loop to count the number of  characters in the given file
+      while(!feof(fp))
+      {       c=fgetc(fp);
+             if(c>=65&&c<=91)
+              {
+                      count_alpha=count_alpha+1;
+               }
+             else if(c>=97&&c<=26)
+              {
+                     count_alpha=count_alpha+1;
+                }
+               else if(c>=48&c<=57)
+                {
+                      count_digits=count_digits+1;
+                 }
+               else if(c==' ')
+                {
+                      count_spaces=count_spaces+1;
+                 }
+                else if(c>=32&&c<=47)
+                {
+                      count_special=count_special+1;
+                 }
+           }
+	  // print all counts
+           printf("number of alphabets=%d\n",count_alpha);
+           printf("number of digits=%d]n",count_digits);
+           printf("number of spaces=%d\n",count_spaces);
+           printf("number of special characters=%d\n",count_special);
+           fclose(fp);
+}

@@ -1,45 +1,38 @@
-#include<stdio.h>
-
-void replace_tabs()
+#include <stdio.h>
+void replacetabs();
+int main()
 {
-
-	FILE *fp1,*fp2;
-	char ch1,ch2;
-
-	
-	fp1=fopen("hello4.txt","r");
-	fp2=fopen("hello4out.txt","w");
-	
-	if ( fp1 == NULL || fp2 == NULL )  
-	{   
-		printf( "Cannot open file\n" ) ;  
-		return;
-	}
-	
-	while(1)
-	{
-		ch1=fgetc(fp1);
-		
-		if(ch1==EOF)
-		break;
-
-		if(ch1=='\t')
-		{
-			ch2='\\';
-			fputc(ch2,fp2);
-			ch2='t';
-			fputc(ch2,fp2);
-			ch1=fgetc(fp1);
-			
-		}
-		fputc(ch1,fp2);
-
-	}
-
-	printf("Replaced tabs with tab character\n");
-	fclose(fp1);
-	fclose(fp2);
-	
-	return;
-
+    replacetabs();
+    return 0;
+}
+void replacetabs()
+{
+     FILE *fp3;
+     fopen(&fp3,"text.txt","w+");
+     char s='\t',c[100];
+      int i;
+      // loop to copy contents of file to string
+      for(;fp3!=EOF;fp3++)
+      {
+            c[i]=fgetc(fp3);
+            i++;
+       }
+       // loop to replace tabs
+        for(i=0;c[i]!='\0';i++)
+        {
+            if(c[i]=='	')
+            {
+                c[i]='\t';   
+             }
+        }
+       printf("%s",c);
+       // loop to copy string contents to file
+       for(;fp3!=EOF;fp3++)
+       { 
+           for(i=0;c[i]!='\0';i++)
+           {
+            fputc(c[i],fp3);
+           }
+        }
+        fclose(fp3);
 }
