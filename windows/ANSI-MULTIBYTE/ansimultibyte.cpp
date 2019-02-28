@@ -12,7 +12,7 @@ void main()
 	CHAR ArrANSI[] = "Soumya";
 	WCHAR ArrWIDE[] = L"Sajja";
 	printf("char: %c\n CHAR: %c\n wchar_t: %C\n WCHAR: %C\n TCHAR:%c\n ArrayANSI: %s\n ArrayWIDE : %S\n", ca1, cA2, wca3, wca4, tc, ArrANSI, ArrWIDE);
-	BOOL ret=IsTextUnicode(
+	BOOL ret = IsTextUnicode(
 		ArrANSI, strlen(ArrANSI), NULL
 	);
 	if (1 == ret)
