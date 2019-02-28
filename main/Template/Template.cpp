@@ -29,7 +29,8 @@ int linear_search(char *array[], int size_arr, char *element)
 }
 int main()
 {
-	int *arr_int, size_arr, result;
-	float *arr_flt;
-	char *
+	int *arr_int, size_IntArr, result;
+	char *arr_char;
+	char **arr_string;
+	cout<<"ente"
 }
