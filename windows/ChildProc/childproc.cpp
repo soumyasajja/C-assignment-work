@@ -25,12 +25,12 @@ void _tmain(int argc, TCHAR *argv[], TCHAR *env)
 		getchar();
 		return;
 	}
-	printf("%d\n", GetProcessId(pi.hProcess));
-	printf("%d\n", GetCurrentProcessId());
-	printf("%d\n", GetCurrentThread());
-	printf("%d\n", GetCurrentThreadId());
-	printf("%d\n", GetThreadId(pi.hThread));
-	printf("%d\n", GetProcessIdOfThread(pi.hThread));
+	printf("Process Id = %d\n", GetProcessId(pi.hProcess));
+	printf("Current Process Id = %d\n", GetCurrentProcessId());
+	printf("Current Thread = %d\n", GetCurrentThread());
+	printf("Current Thread Id = %d\n", GetCurrentThreadId());
+	printf("Thread Id = %d\n", GetThreadId(pi.hThread));
+	printf("Process Id of Thread = %d\n", GetProcessIdOfThread(pi.hThread));
 	WaitForSingleObject(pi.hProcess, INFINITE); 
 	CloseHandle(pi.hProcess);
 	CloseHandle(pi.hThread);
