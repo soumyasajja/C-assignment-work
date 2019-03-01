@@ -29,8 +29,12 @@ int linear_search(char *array[], int size_arr, char *element)
 }
 int main()
 {
-	int *arr_int, size_IntArr, result;
-	char *arr_char;
+	int *arr_int, size_IntArr,size_str, result;
+	//char *arr_char;
 	char **arr_string;
-	cout<<"ente"
+	cout << "enter the size of integer array\n";
+	cin >> size_IntArr;
+	arr_int = new int[size_IntArr];
+	cout << "enter the integer array elements\n";
+	for(int count=0;count<size_IntArr;count++)
 }
