@@ -11,6 +11,7 @@ DWORD WINAPI thread_func(LPVOID lparam)
 int main()
 {
 		DWORD dwThreadId1;
+		DWORD dwMs;
 		HANDLE hThread1;
 		hThread1 = CreateThread(
 			NULL, 0, thread_func, 0, NULL, &dwThreadId1
@@ -21,7 +22,9 @@ int main()
 			getchar();
 			return FALSE;
 		}
-		DWORD dw = WaitForSingleObject(hThread1, 1000);
+		printf("enter the timeout period\n");
+		scanf_s("%ld", &dwMs);
+		DWORD dw = WaitForSingleObject(hThread1, dwMs);
 		switch (dw)
 		{
 		case WAIT_OBJECT_0:

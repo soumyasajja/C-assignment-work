@@ -5,13 +5,13 @@
 DWORD WINAPI thread_func1(LPVOID lparam)
 {
 
-	Sleep(2000);
+	Sleep(4000);
 	return 1;
 }
 DWORD WINAPI thread_func2(LPVOID lparam)
 {
 
-	Sleep(2000);
+	Sleep(3000);
 	return 1;
 }
 int main()
@@ -19,6 +19,8 @@ int main()
 	DWORD dwThreadId1,dwThreadId2;
 	HANDLE hThread1,hThread2;
 	HANDLE arry_hand[2];
+	BOOL bwaitall=FALSE;
+	DWORD dwMs=INFINITE;
 	hThread1 = CreateThread(
 		NULL, 0, thread_func1, 0, NULL, &dwThreadId1
 	);
@@ -39,7 +41,12 @@ int main()
 	}
 	arry_hand[0] = hThread1;
 	arry_hand[1] = hThread2;
-	DWORD dw = WaitForMultipleObjects(2,arry_hand,FALSE,INFINITE);
+	/*printf("enter the waiting condition\n");
+	scanf_s("%ld", &bwaitall);
+	getchar();
+	printf("enter the timeout period\n");
+	scanf_s("%ld", &dwMs);*/
+	DWORD dw = WaitForMultipleObjects(2,arry_hand,bwaitall,dwMs);
 	switch (dw)
 	{
 	case WAIT_OBJECT_0+0:
