@@ -2,19 +2,28 @@
 #include <Windows.h>
 #include <tchar.h>
 #include <stdlib.h>
+DWORD WINAPI thread_func(LPVOID lparam)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		printf("i=%d\n", i);
+		Sleep(1000);
+	}
+	return 0;
+}
 void _tmain(int argc, TCHAR *argv[], TCHAR *env[])
 {
 	STARTUPINFO si1;
 	PROCESS_INFORMATION pi1;
 	SECURITY_ATTRIBUTES sa;
-	HANDLE hproc;
+	HANDLE hThread;
 	ZeroMemory(&si1, sizeof(si1));
 	si1.cb = sizeof(si1);
 	ZeroMemory(&pi1, sizeof(pi1));
 	sa.nLength = sizeof(sa);
 	sa.lpSecurityDescriptor = NULL;
 	sa.bInheritHandle = TRUE;
-	SetPriorityClass()
+	SetPriorityClass(pi1.hProcess, HIGH_PRIORITY_CLASS);
 	if (argc != 3)
 	{
 		printf("Usage\n");
@@ -27,4 +36,5 @@ void _tmain(int argc, TCHAR *argv[], TCHAR *env[])
 		getchar();
 		return;
 	}
+	
 }
