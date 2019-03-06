@@ -18,6 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="add.cpp" />
+    <ClCompile Include="division.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mul.cpp" />
+    <ClCompile Include="sub.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B46B6B87-8DC8-4695-9DAE-E49B4E85AAF9}</ProjectGuid>
@@ -114,13 +121,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="add.c" />
-    <ClCompile Include="division.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="mul.c" />
-    <ClCompile Include="sub.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

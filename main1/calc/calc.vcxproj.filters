@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="add.c">
+    <ClCompile Include="add.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sub.c">
+    <ClCompile Include="sub.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mul.c">
+    <ClCompile Include="mul.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="division.c">
+    <ClCompile Include="division.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
