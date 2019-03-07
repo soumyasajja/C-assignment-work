@@ -102,6 +102,7 @@ int main()
 			break;
 		case 5:
 			printf("reversal of first string is %s\n", strrevv(str1));
+			printf("reversal of second string is %s\n", strrevv(str2));
 			break;
 
 		}
