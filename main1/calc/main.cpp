@@ -7,44 +7,44 @@ int add(int, int);
 int sub(int, int);
 long int mul(int, int);
 int division(int, int);
-bool areParanthesisBalanced(string expr)
+bool areParanthesisBalanced(char expr[])
 	{
-		stack<char> ip_str;
+		stack<char> ip_st;
 		char stack_x;
-		for (int count = 0; count < expr.length(); count++)
+		for (int count = 0; count < strlen(expr); count++)
 		{
 			if (expr[count] == '(' || expr[count] == '[' || expr[count] == '{')
 			{
-				ip_str.push(expr[count]);
+				ip_st.push(expr[count]);
 				continue;
 			}
-			if (ip_str.empty())
+			if (ip_st.empty())
 				return true;
 			switch (expr[count])
 			{
 			case ')':
-				stack_x = ip_str.top();
-				ip_str.pop();
+				stack_x = ip_st.top();
+				ip_st.pop();
 				if (stack_x == '{' || stack_x == '[')
 					return false;
 				break;
 			case '}':
-				stack_x = ip_str.top();
-				ip_str.pop();
+				stack_x = ip_st.top();
+				ip_st.pop();
 				if (stack_x == '(' || stack_x == '[')
 					return false;
 				break;
 			case ']':
-				stack_x = ip_str.top();
-				ip_str.pop();
+				stack_x = ip_st.top();
+				ip_st.pop();
 				if (stack_x == '(' || stack_x == '{')
 					return false;
 				break;
 			}
 		}
-		return (ip_str.empty());
+		return (ip_st.empty());
 	}
-	int postfixeval(string ip_str) {
+	int postfixeval(char ip_str[]) {
 		stack<int> st;
 		st.push(0);
 		int num1, num2;
