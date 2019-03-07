@@ -45,7 +45,7 @@ bool areParanthesisBalanced(char expr[])
 		return (ip_st.empty());
 	}
 	int postfixeval(string ip_str) {
-		stack<int> st;
+		stack<double> st;
 		st.push(0);
 		float num1, num2;
 		int index = 0;
