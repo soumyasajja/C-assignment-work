@@ -52,7 +52,7 @@ int main()
 {
 	char *str1, *str2;
 	char storage[50] = "";
-	int num = 0;
+	int num = 0,rev_op;
 	str1 = NULL;
 	str1 = (char*)malloc(MAX_LENGTH_STRING * sizeof(char));
 	str2 = NULL;
@@ -101,8 +101,17 @@ int main()
 
 			break;
 		case 5:
-			printf("reversal of first string is %s\n", strrevv(str1));
-			printf("reversal of second string is %s\n", strrevv(str2));
+			printf("enter 1.reverse first string, 2.reverse second string\n");
+			scanf_s("%d", &rev_op);
+			switch (rev_op)
+			{
+			case 1:
+				printf("reversal of first string is %s\n", strrevv(str1));
+				break;
+			case 2:
+				printf("reversal of second string is %s\n", strrevv(str2));
+				break;
+			}
 			break;
 
 		}

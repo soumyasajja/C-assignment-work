@@ -1,4 +1,4 @@
-extern int division(int num1, int num2)
+extern float division(float num1, float num2)
 {
 	if (num1 == 0)
 	{

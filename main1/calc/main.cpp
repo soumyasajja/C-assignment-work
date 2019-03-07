@@ -3,10 +3,10 @@
 #include <stack>
 #define MAX_INPUT_STRING 30
 using namespace std;
-int add(int, int);
-int sub(int, int);
-long int mul(int, int);
-int division(int, int);
+float add(float, float);
+float sub(float, float);
+double mul(float, float);
+float division(float, float);
 bool areParanthesisBalanced(char expr[])
 	{
 		stack<char> ip_st;
@@ -47,12 +47,12 @@ bool areParanthesisBalanced(char expr[])
 	int postfixeval(string ip_str) {
 		stack<int> st;
 		st.push(0);
-		int num1, num2;
+		float num1, num2;
 		int index = 0;
 
 		for (index = 0; ip_str[index] != '\0'; index++) {
 			if (isdigit(ip_str[index])) {
-				int asc = (int)ip_str[index];
+				float asc = (float)ip_str[index];
 				st.push(asc - 48);
 			}
 			else {
@@ -61,7 +61,7 @@ bool areParanthesisBalanced(char expr[])
 					st.pop();
 					num2 = st.top();
 					st.pop();
-					long int multip = mul(num1, num2);
+					double multip = mul(num1, num2);
 					st.push(multip);
 				}
 				if (ip_str[index] == '/') {
@@ -69,7 +69,7 @@ bool areParanthesisBalanced(char expr[])
 					st.pop();
 					num2 = st.top();
 					st.pop(); try {
-						int quotient = division(num1, num2);
+						float quotient = division(num1, num2);
 						st.push(quotient);
 					}
 					catch (const char *err_msg) {
@@ -81,7 +81,7 @@ bool areParanthesisBalanced(char expr[])
 					st.pop();
 					num2 = st.top();
 					st.pop();
-					int sum = add(num1, num2);
+					float sum = add(num1, num2);
 					st.push(sum);
 				}
 				if (ip_str[index] == '-') {
@@ -89,7 +89,7 @@ bool areParanthesisBalanced(char expr[])
 					st.pop();
 					num2 = st.top();
 					st.pop();
-					int diff = sub(num2, num1);
+					float diff = sub(num2, num1);
 					st.push(diff);
 				}
 			}

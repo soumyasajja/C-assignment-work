@@ -1,4 +1,4 @@
-extern int sub(int num1, int num2)
+extern float sub(float num1, float num2)
 {
 	return(num1 - num2);
 }

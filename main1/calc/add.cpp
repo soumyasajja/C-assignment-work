@@ -1,4 +1,4 @@
-extern int add(int num1, int num2)
+extern float add(float num1, float num2)
 {
 	return(num1 + num2);
 }
