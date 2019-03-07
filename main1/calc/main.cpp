@@ -44,20 +44,19 @@ bool areParanthesisBalanced(char expr[])
 		}
 		return (ip_st.empty());
 	}
-	int postfixeval(char ip_str[]) {
+	int postfixeval(string ip_str) {
 		stack<int> st;
 		st.push(0);
 		int num1, num2;
-		int i = 0;
+		int index = 0;
 
-		for (i = 0; ip_str[i] != '\0'; i++) {
-			if (isdigit(ip_str[i])) {
-				int asc = (int)ip_str[i];
-				//cout<<a-48;
+		for (index = 0; ip_str[index] != '\0'; index++) {
+			if (isdigit(ip_str[index])) {
+				int asc = (int)ip_str[index];
 				st.push(asc - 48);
 			}
 			else {
-				if (ip_str[i] == '*') {
+				if (ip_str[index] == '*') {
 					num1 = st.top();
 					st.pop();
 					num2 = st.top();
@@ -65,7 +64,7 @@ bool areParanthesisBalanced(char expr[])
 					long int multip = mul(num1, num2);
 					st.push(multip);
 				}
-				if (ip_str[i] == '/') {
+				if (ip_str[index] == '/') {
 					num1 = st.top();
 					st.pop();
 					num2 = st.top();
@@ -73,7 +72,7 @@ bool areParanthesisBalanced(char expr[])
 					int quotient = division(num1, num2);
 					st.push(quotient);
 				}
-				if (ip_str[i] == '+') {
+				if (ip_str[index] == '+') {
 					num1 = st.top();
 					st.pop();
 					num2 = st.top();
@@ -81,7 +80,7 @@ bool areParanthesisBalanced(char expr[])
 					int sum = add(num1, num2);
 					st.push(sum);
 				}
-				if (ip_str[i] == '-') {
+				if (ip_str[index] == '-') {
 					num1 = st.top();
 					st.pop();
 					num2 = st.top();
@@ -97,7 +96,11 @@ bool areParanthesisBalanced(char expr[])
 	}
 	int precedence(char ch)
 	{
-		if (ch == ')' || ch == '}' || ch == ']')
+		if (ch == ']')
+			return 6;
+		else if (ch == '}')
+			return 5;
+		else if (ch == ')')
 			return 4;
 		else if (ch == '*' || ch == '/')
 			return 3;
