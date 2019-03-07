@@ -68,9 +68,13 @@ bool areParanthesisBalanced(char expr[])
 					num1 = st.top();
 					st.pop();
 					num2 = st.top();
-					st.pop();
-					int quotient = division(num1, num2);
-					st.push(quotient);
+					st.pop(); try {
+						int quotient = division(num1, num2);
+						st.push(quotient);
+					}
+					catch (const char *err_msg) {
+						cout << err_msg << endl;
+					}
 				}
 				if (ip_str[index] == '+') {
 					num1 = st.top();
