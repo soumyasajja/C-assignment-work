@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#define MAX_INPUT_STRING 30
 using namespace std;
 int add(int, int);
 int sub(int, int);
@@ -44,9 +45,9 @@ bool areParanthesisBalanced(string expr)
 		return (ip_str.empty());
 	}
 	int postfixeval(string ip_str) {
-		stack<double> st;
+		stack<int> st;
 		st.push(0);
-		double c1, c2;
+		int num1, num2;
 		int i = 0;
 
 		for (i = 0; ip_str[i] != '\0'; i++) {
@@ -57,35 +58,35 @@ bool areParanthesisBalanced(string expr)
 			}
 			else {
 				if (ip_str[i] == '*') {
-					c1 = st.top();
+					num1 = st.top();
 					st.pop();
-					c2 = st.top();
+					num2 = st.top();
 					st.pop();
-					long int multip = mul(c1, c2);
+					long int multip = mul(num1, num2);
 					st.push(multip);
 				}
 				if (ip_str[i] == '/') {
-					c1 = st.top();
+					num1 = st.top();
 					st.pop();
-					c2 = st.top();
+					num2 = st.top();
 					st.pop();
-					int quotient = division(c1, c2);
+					int quotient = division(num1, num2);
 					st.push(quotient);
 				}
 				if (ip_str[i] == '+') {
-					c1 = st.top();
+					num1 = st.top();
 					st.pop();
-					c2 = st.top();
+					num2 = st.top();
 					st.pop();
-					int sum = add(c1, c2);
+					int sum = add(num1, num2);
 					st.push(sum);
 				}
 				if (ip_str[i] == '-') {
-					c1 = st.top();
+					num1 = st.top();
 					st.pop();
-					c2 = st.top();
+					num2 = st.top();
 					st.pop();
-					int diff = sub(c2, c1);
+					int diff = sub(num2, num1);
 					st.push(diff);
 				}
 			}
@@ -94,22 +95,27 @@ bool areParanthesisBalanced(string expr)
 		cout << st.top();
 		return 0;
 	}
-	int precedence(char c)
+	int precedence(char ch)
 	{
-		if (c == '*' || c == '/')
+		if (ch == ')' || ch == '}' || ch == ']')
+			return 4;
+		else if (ch == '*' || ch == '/')
+			return 3;
+		else if (ch == '+' || ch == '-')
 			return 2;
-		else if (c == '+' || c == '-')
+		else if (ch == '(' || ch == '{' || ch == '[')
 			return 1;
-		else
 			return -1;
 	}
 	int main() {
 		stack<char> st;
 		st.push('N');
-
-		string s, ns, ns1;
-		cin >> s;
-		if (areParanthesisBalanced(s)) {
+		char *ip_str;
+		string ns, ns1;
+		ip_str = new char[MAX_INPUT_STRING];
+		cout << "enter the input string\n";
+		cin >> ip_str;
+		if (areParanthesisBalanced(ip_str)) {
 			cout << "Balanced" << endl;
 		}
 		else {
@@ -117,48 +123,54 @@ bool areParanthesisBalanced(string expr)
 			system("pause");
 			return 0;
 		}
-		int l = s.length();
-		char c;
-
-		for (int i = 0; i < l; i++) {
-			if (isdigit(s[i])) {
-				ns += s[i];
+		int len = strlen(ip_str);
+		char ch;
+		for (int i = 0; i < len; i++) {
+			if (isdigit(ip_str[i])) {
+				ns += ip_str[i];
 			}
-			else if (s[i] == '(') {
-				st.push(s[i]);
+			else if (ip_str[i] == '[') {
+				st.push(ip_str[i]);
 			}
-			else if (s[i] == ')') {
+			else if (ip_str[i] == '{') {
+				st.push(ip_str[i]);
+			}
+			else if (ip_str[i] == '(') {
+				st.push(ip_str[i]);
+			}
+			else if (ip_str[i] == ')') {
 				while (st.top() != 'N'&&st.top() != '(') {
-					c = st.top();
+					ch = st.top();
 					st.pop();
-					ns += c;
+					ns += ch;
 				}
 				if (st.top() == '(') {
-					c = st.top();
+					ch = st.top();
 					st.top();
 				}
 			}
 			else {
-				while (st.top() != 'N'&&precedence(s[i]) <= precedence(st.top())) {
-					c = st.top();
+				while (st.top() != 'N'&&precedence(ip_str[i]) <= precedence(st.top())) {
+					ch = st.top();
 					st.pop();
-					ns += c;
+					ns += ch;
 				}
-				st.push(s[i]);
+				st.push(ip_str[i]);
 			}
 		}
 		while (st.top() != 'N') {
-			c = st.top();
+			ch = st.top();
 			st.pop();
-			ns += c;
+			ns += ch;
 		}
-		for (int i = 0; i < l; i++) {
-			if (ns[i] == '(') {
+		for (int i = 0; i < len; i++) {
+			if (ns[i] == '('||ns[i]=='{'||ns[i]=='[') {
 				continue;
 			}
 			ns1 += ns[i];
 		}
 		postfixeval(ns1);
 		system("pause");
+		delete ip_str;
 		return 0;
 	}
