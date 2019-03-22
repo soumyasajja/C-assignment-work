@@ -13,7 +13,7 @@ bool areParanthesisBalanced(char expr[])
 		char stack_x;
 		for (int count = 0; count < strlen(expr); count++)
 		{
-			if (expr[count] == '(' || expr[count] == '[' || expr[count] == '{')
+			if (expr[count] == '(')
 			{
 				ip_st.push(expr[count]);
 				continue;
@@ -25,20 +25,6 @@ bool areParanthesisBalanced(char expr[])
 			case ')':
 				stack_x = ip_st.top();
 				ip_st.pop();
-				if (stack_x == '{' || stack_x == '[')
-					return false;
-				break;
-			case '}':
-				stack_x = ip_st.top();
-				ip_st.pop();
-				if (stack_x == '(' || stack_x == '[')
-					return false;
-				break;
-			case ']':
-				stack_x = ip_st.top();
-				ip_st.pop();
-				if (stack_x == '(' || stack_x == '{')
-					return false;
 				break;
 			}
 		}
@@ -49,7 +35,6 @@ bool areParanthesisBalanced(char expr[])
 		st.push(0);
 		float num1, num2;
 		int index = 0;
-
 		for (index = 0; ip_str[index] != '\0'; index++) {
 			if (isdigit(ip_str[index])) {
 				float asc = (float)ip_str[index];
@@ -100,17 +85,13 @@ bool areParanthesisBalanced(char expr[])
 	}
 	int precedence(char ch)
 	{
-		if (ch == ']')
-			return 6;
-		else if (ch == '}')
-			return 5;
-		else if (ch == ')')
+		if (ch == ')')
 			return 4;
 		else if (ch == '*' || ch == '/')
 			return 3;
 		else if (ch == '+' || ch == '-')
 			return 2;
-		else if (ch == '(' || ch == '{' || ch == '[')
+		else if (ch == '(')
 			return 1;
 			return -1;
 	}
@@ -132,20 +113,14 @@ bool areParanthesisBalanced(char expr[])
 		}
 		int len = strlen(ip_str);
 		char ch;
-		for (int i = 0; i < len; i++) {
-			if (isdigit(ip_str[i])) {
-				ns += ip_str[i];
+		for (int index = 0; ip_str[index]!='\0'; index++) {
+			if (isdigit(ip_str[index])) {
+				ns += ip_str[index];
 			}
-			else if (ip_str[i] == '[') {
-				st.push(ip_str[i]);
+			else if (ip_str[index] == '(') {
+				st.push(ip_str[index]);
 			}
-			else if (ip_str[i] == '{') {
-				st.push(ip_str[i]);
-			}
-			else if (ip_str[i] == '(') {
-				st.push(ip_str[i]);
-			}
-			else if (ip_str[i] == ')') {
+			else if (ip_str[index] == ')') {
 				while (st.top() != 'N'&&st.top() != '(') {
 					ch = st.top();
 					st.pop();
@@ -157,12 +132,12 @@ bool areParanthesisBalanced(char expr[])
 				}
 			}
 			else {
-				while (st.top() != 'N'&&precedence(ip_str[i]) <= precedence(st.top())) {
+				while (st.top() != 'N'&&precedence(ip_str[index]) <= precedence(st.top())) {
 					ch = st.top();
 					st.pop();
 					ns += ch;
 				}
-				st.push(ip_str[i]);
+				st.push(ip_str[index]);
 			}
 		}
 		while (st.top() != 'N') {
@@ -170,11 +145,12 @@ bool areParanthesisBalanced(char expr[])
 			st.pop();
 			ns += ch;
 		}
-		for (int i = 0; i < len; i++) {
-			if (ns[i] == '('||ns[i]=='{'||ns[i]=='[') {
+		for (int index = 0; index < len; index++) {
+			if (ns[index] == '(') 
+			{
 				continue;
 			}
-			ns1 += ns[i];
+			ns1 += ns[index];
 		}
 		postfixeval(ns1);
 		system("pause");

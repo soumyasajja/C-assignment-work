@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define MAX_LENGTH_STRING 30
+#define MAX_LENGTH_STRING1 40
+#define MAX_LENGTH_STRING2 30
 char *strcopy(char *str1, const char *str2)
 {
 	char *dst = str1;
@@ -47,23 +48,20 @@ char *strrevv(char *str)
 	}
 	return str;
 }
-
 int main()
 {
 	char *str1, *str2;
-	char storage[50] = "";
 	int num = 0,rev_op;
 	str1 = NULL;
-	str1 = (char*)malloc(MAX_LENGTH_STRING * sizeof(char));
+	str1 = (char*)malloc(MAX_LENGTH_STRING1 * sizeof(char));
 	str2 = NULL;
-	str2 = (char*)malloc(MAX_LENGTH_STRING * sizeof(char));
+	str2 = (char*)malloc(MAX_LENGTH_STRING2 * sizeof(char));
 	printf("enter the strings:\n");
 	gets(str1);
 	gets(str2);
 	printf("the entered strings are\n");
 	puts(str1);
 	puts(str2);
-
 	while (num <= 5)
 	{
 		printf("1.Length\n2.Copy\n3.Concatenate\n4.Comparison\n5.Reversal\n");

@@ -21,7 +21,7 @@ public:
 		cout << "Name=" << name << endl;
 	}
 };
-class Physique:public Person
+class Physique :virtual public Person
 {
 	float height, weight;
 public:
@@ -38,7 +38,7 @@ public:
 		cout << "Weight=" << weight << endl;
 	}
 };
-class Family:public Person
+class Family :virtual public Person
 {
 	char *religion;
 	int numChildren;
@@ -53,8 +53,8 @@ public:
 	}
 	void display()
 	{
-		cout << "Religion=" << religion<<endl;
-		cout << "Number of children" << numChildren<<endl;
+		cout << "Religion=" << religion << endl;
+		cout << "Number of children" << numChildren << endl;
 	}
 };
 class Employee :public Physique, Family

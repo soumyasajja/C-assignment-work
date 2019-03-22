@@ -4,8 +4,8 @@
 #include <conio.h>
 #define MAX_SHORT_HAND 20
 #define MAX_EXPANDED 100
-void expand(char s1[], char s2[]);
-int valid_range(char, char);
+void expand(char s1[], char s2[]); 
+int valid_range(char, char);  //prototype for checking valid range
 int main()
 {
 	char *str1, *str2;
@@ -17,7 +17,7 @@ int main()
 	gets(str1);
 	printf("the entered string is:\n");
 	puts(str1);
-	expand(str1, str2);
+	expand(str1, str2);  //function call for expansion
 	printf("%s\n", str2);
 	system("pause");
 	getchar();
@@ -25,6 +25,7 @@ int main()
 	free(str2);
 	return EXIT_SUCCESS;
 }
+//valid range function
 int valid_range(char ch1, char ch2)
 {
 	if (('a' <= ch1 && ch1 <= 'z') && (ch1 <= ch2 && ch2 <= 'z'))
@@ -35,6 +36,7 @@ int valid_range(char ch1, char ch2)
 		return 1;
 	return 0;
 }
+//expansion of shorthand
 void expand(char s1[], char s2[])
 {
 	int out_loop=0, in_loop = 0;
@@ -43,7 +45,7 @@ void expand(char s1[], char s2[])
 	{ 
 		if (s1[out_loop] == '-')
 		{
-			if (s1[out_loop + 1] == '-')
+			if (s1[out_loop + 1] == '-') //check if --
 			{
 				printf("not a valid user input\n");
 				break;
